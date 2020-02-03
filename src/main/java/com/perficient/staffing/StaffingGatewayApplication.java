@@ -1,9 +1,9 @@
-package com.perficient.staffing.staffinggateway;
+package com.perficient.staffing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "com.perficient.staffing") //scan base packages connects it to the local thing.
+@SpringBootApplication
 public class StaffingGatewayApplication {
 
     public static void main(String[] args) {
