@@ -21,6 +21,4 @@ public class ProjectGetController {
         return "business unit is " + businessUnitId;
 
     }
-
-
 }
