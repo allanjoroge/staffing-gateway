@@ -1,5 +1,6 @@
 package com.perficient.staffing.gateway.project.controller;
 
+import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;
@@ -11,21 +12,17 @@ public class ProjectGetController {
 
     @GetMapping("/projects")
     @ResponseStatus(HttpStatus.OK)
-    public String getAllProjects(@RequestParam @Nullable Integer businessUnitId) {
-
-        log.debug("Getting all projects for business unit {}", businessUnitId);
-
-        return "business unit is " + businessUnitId;
-
+    public <ProjectDTO> ProjectDTO findAllProjects(@RequestParam @Nullable ProjectDTO projectDTO) {
+        return projectDTO;
     }
+
+
+
 
     @GetMapping("/projects/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String getProjectById(@PathVariable Integer id) {
+    public ProjectDTO findProjectById(@PathVariable Integer id) {
 
-        log.debug("Getting project with ID {}", id);
-
-        return "project ID is " + id;
-
+        return findProjectById(id);
     }
 }
