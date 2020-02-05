@@ -36,7 +36,7 @@ public class ProjectGetControllerTest {
     private ProjectGetService projectGetService;
 
     @Test
-    public void verifyGetAllProjectWithNoBusinessUnitId() throws Exception {
+    public void verifyFindAllProjectWithNoBusinessUnitId() throws Exception {
 
         //setup
         List<ProjectDTO> projectDTOList = new ArrayList<>();
@@ -55,7 +55,7 @@ public class ProjectGetControllerTest {
     }
 
     @Test
-    public void verifyGetAllProjectWithBusinessUnitId() throws Exception {
+    public void verifyFindAllProjectWithBusinessUnitId() throws Exception {
 
         //setup
         List<ProjectDTO> projectDTOList = new ArrayList<>();
@@ -75,7 +75,7 @@ public class ProjectGetControllerTest {
     }
 
     @Test
-    public void verifyGetProjectById() throws Exception {
+    public void verifyFindProjectById() throws Exception {
 
         // Setup fake data, and tell our mocked service class how to behave.
         ProjectDTO projectDTO = ProjectDTO.builder().id(5).projectName("Albert").build();
