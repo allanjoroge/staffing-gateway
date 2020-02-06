@@ -36,7 +36,7 @@ public class ProjectGetControllerTest {
     private ProjectGetService projectGetService;
 
     @Test
-    public void verifyFindAllProjectWithNoBusinessUnitId() throws Exception {
+    public void verifyFindAllProjects() throws Exception {
 
         //setup
         List<ProjectDTO> projectDTOList = new ArrayList<>();
@@ -55,12 +55,12 @@ public class ProjectGetControllerTest {
     }
 
     @Test
-    public void verifyFindAllProjectWithBusinessUnitId() throws Exception {
+    public void verifyFindAllProjectsWithBusinessUnitId() throws Exception {
 
         //setup
         List<ProjectDTO> projectDTOList = new ArrayList<>();
-        projectDTOList.add(ProjectDTO.builder().id(5).projectName("Albert").build());
-        //when(projectGetService.findAll()).thenReturn(projectDTOList);
+        projectDTOList.add(ProjectDTO.builder().id(5).businessUnitId(10).projectName("Albert").build());
+        when(projectGetService.findAllByBusinessUnitId(10)).thenReturn(projectDTOList);
 
         //build a GET request for /projects executing MockMvc
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/projects?businessUnitId=10");
@@ -68,10 +68,9 @@ public class ProjectGetControllerTest {
         MockHttpServletResponse response = result.getResponse();
 
         // Verify our interactions with the mocked projectGetService, and that we received a 200 response status.
-        //verify(projectGetService, times(1)).findAll();
-        //verifyNoMoreInteractions(projectGetService);
+        verify(projectGetService, times(1)).findAllByBusinessUnitId(10);
+        verifyNoMoreInteractions(projectGetService);
         assertEquals(HttpStatus.OK.value(), response.getStatus());
-        //assertEquals("business unit is 10", response.getContentAsString());
     }
 
     @Test
