@@ -23,9 +23,13 @@ public class ProjectGetServiceImpl implements ProjectGetService {
 
     //make call to localhost:8081/projects with restTemplate
     @Override
-    public List<ProjectDTO> findAll() {
+    public List<ProjectDTO> search(Integer businessUnitId) {
 
-        final String uri = "http://localhost:8081/projects";
+        String uri = "http://localhost:8081/projects";
+
+        if (businessUnitId != null) {
+            uri = uri + "?businessUnitId=" + businessUnitId;
+        }
 
         ResponseEntity<ProjectDTO[]> entity = restTemplate.getForEntity(uri,
                 ProjectDTO[].class);
@@ -33,13 +37,8 @@ public class ProjectGetServiceImpl implements ProjectGetService {
         return entity.getBody() != null? Arrays.asList(entity.getBody()) : Collections.emptyList();
     }
 
-    @Override
-    public List<ProjectDTO> findAllByBusinessUnitId(Integer businessUnitId) {
-        return null;
-    }
-
-    @Override
-    public ProjectDTO findProjectById(Integer id) {
-        return null;
-    }
+//    @Override
+//    public ProjectDTO findProjectById(Integer id) {
+//        return null;
+//    }
 }

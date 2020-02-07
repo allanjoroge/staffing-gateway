@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface ProjectGetService {
 
-    List<ProjectDTO> findAll();
+    List<ProjectDTO> search(Integer businessUnitId);
 
-    List<ProjectDTO> findAllByBusinessUnitId(Integer businessUnitId);
-
-    ProjectDTO findProjectById(Integer id);
+   // ProjectDTO findProjectById(Integer id);
 }
