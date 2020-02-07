@@ -14,6 +14,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,12 +34,20 @@ public class ProjectPostServiceImplTest {
     @Test
     public void saveProject() throws Exception {
 
-
         ProjectDTO projectDTO = ProjectDTO.builder().projectName("John").build();
-        when(restTemplateMock.getForEntity("http://localhost:8081/projects", ProjectDTO.class)).thenReturn(new ResponseEntity(projectDTO, HttpStatus.CREATED));
+        when(restTemplateMock.postForEntity("http://localhost:8081/projects", projectDTO, ProjectDTO.class)).thenReturn(new ResponseEntity(projectDTO, HttpStatus.CREATED));
+
+
+        ProjectPostServiceImpl projectPostService = new ProjectPostServiceImpl(restTemplateMock);
+        projectPostService.saveProject(projectDTO);
+
+        verify(restTemplateMock).();
+        assertEquals(HttpStatus.CREATED.value(), restTemplateMock.());
+
+
 
     }
-}
+
 
     ProjectPostServiceImpl projectPostService = new ProjectPostServiceImpl(projectRepositoryMock, projectMapperMock);
         projectPostService.saveProject(projectDTO);

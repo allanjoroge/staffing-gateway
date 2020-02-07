@@ -35,5 +35,5 @@ public class ProjectPostServiceImpl implements ProjectPostService {
         return restTemplate.exchange(
                 "http://localhost:8081/projects", HttpMethod.POST, entity, ProjectDTO.class).getBody();
     }
-    }
+}
 
