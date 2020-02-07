@@ -35,8 +35,6 @@ public class ProjectPostServiceImplTest {
         ProjectDTO projectDTO = ProjectDTO.builder().projectName("John").build();
         when(restTemplateMock.getForEntity("http://localhost:8081/projects", ProjectDTO.class)).thenReturn(new ResponseEntity(projectDTO, HttpStatus.CREATED));
 
-
-
     }
 }
 
