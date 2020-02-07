@@ -1,57 +1,41 @@
 package com.perficient.staffing.staffinggateway.service;
 
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
-import com.perficient.staffing.gateway.project.service.ProjectPostService;
 import com.perficient.staffing.gateway.project.service.ProjectPostServiceImpl;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-@WebMvcTest(value = ProjectPostServiceImpl.class)
 public class ProjectPostServiceImplTest {
 
     @Mock
     private RestTemplate restTemplateMock;
 
-    @Autowired
-    private ProjectPostServiceImpl projectPostServiceImplMock;
+    @InjectMocks
+    private ProjectPostServiceImpl projectPostService;
 
     @Test
-    public void saveProject() throws Exception {
+    public void saveProject() {
 
-        ProjectDTO projectDTO = ProjectDTO.builder().projectName("John").build();
-        when(restTemplateMock.postForEntity("http://localhost:8081/projects", projectDTO, ProjectDTO.class)).thenReturn(new ResponseEntity(projectDTO, HttpStatus.CREATED));
+        ProjectDTO projectDTO = ProjectDTO.builder().id(5).businessUnitId(4).projectName("John").build();
 
+        when(restTemplateMock.postForObject(anyString(), any(), eq(ProjectDTO.class))).thenReturn(projectDTO);
 
-        ProjectPostServiceImpl projectPostService = new ProjectPostServiceImpl(restTemplateMock);
-        projectPostService.saveProject(projectDTO);
+        ProjectDTO dto = projectPostService.saveProject(projectDTO);
+        assertNotNull(dto);
 
-        verify(restTemplateMock).();
-        assertEquals(HttpStatus.CREATED.value(), restTemplateMock.());
+        verify(restTemplateMock, times(1)).postForObject(anyString(), any(), eq(ProjectDTO.class));
 
 
 
     }
+}
 
-
-    ProjectPostServiceImpl projectPostService = new ProjectPostServiceImpl(projectRepositoryMock, projectMapperMock);
-        projectPostService.saveProject(projectDTO);
-
-                //assertions
-                verify(projectRepositoryMock).save(project);
-                verify(projectMapperMock).reverseTransform(any());

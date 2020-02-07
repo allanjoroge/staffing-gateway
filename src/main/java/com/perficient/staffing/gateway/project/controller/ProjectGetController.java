@@ -24,19 +24,16 @@ public class ProjectGetController {
 
     @GetMapping("/projects")
     @ResponseStatus(HttpStatus.OK)
-    public List<ProjectDTO> findAllProjects(@RequestParam @Nullable Integer businessUnitId) {
+    public List<ProjectDTO> search(@RequestParam @Nullable Integer businessUnitId) {
 
-        if (businessUnitId==null){
+       return projectGetService.search(businessUnitId);
 
-            return projectGetService.findAll();
-        }
-        return projectGetService.findAllByBusinessUnitId(businessUnitId);
     }
 
-    @GetMapping("/projects/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public ProjectDTO findProjectById(@PathVariable Integer id) {
-
-        return null;
-    }
+//    @GetMapping("/projects/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public ProjectDTO findProjectById(@PathVariable Integer id) {
+//
+//        return null;
+//    }
 }
