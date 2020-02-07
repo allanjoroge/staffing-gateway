@@ -21,6 +21,7 @@ public class ProjectPostServiceImpl implements ProjectPostService {
 
     @Autowired
     public ProjectPostServiceImpl(RestTemplate restTemplate) {
+
         this.restTemplate = restTemplate;
     }
 
