@@ -1,6 +1,7 @@
 package com.perficient.staffing.gateway.project.service;
 
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,8 +14,11 @@ import org.springframework.http.MediaType;
 
 import java.util.Arrays;
 
+@Slf4j
 @Service
 public class ProjectPutServiceImpl implements ProjectPutService {
+
+    public static final String  PROJECT_MS_URL = "http://localhost:8081/projects/";
 
     private RestTemplate restTemplate;
 
@@ -25,32 +29,12 @@ public class ProjectPutServiceImpl implements ProjectPutService {
 
     @Override
     @PutMapping("/projects/{id}")
-    public ProjectDTO updateProject(ProjectDTO projectDTO) {
+    public void updateProject(ProjectDTO projectDTO) {
 
-        final String uri = "http://localhost:8081/projects/{id}";
+        String url = PROJECT_MS_URL + projectDTO.getId();
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<ProjectDTO> entity = new HttpEntity<>(projectDTO, headers);
-
-        return restTemplate.exchange(
-                uri, HttpMethod.PUT, entity, ProjectDTO.class).getBody();
+        log.debug("Updating project Id {} DTO is {}", projectDTO.getId(), projectDTO);
+        restTemplate.put(url, projectDTO);
 
     }
 }
-
-//        ResponseEntity<ProjectDTO> entity = restTemplate.put(uri,
-//                ProjectDTO[].class, );
-//
-//        return entity.getBody() != null? Arrays.asList(entity.getBody()) : Collections.emptyList();
-
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-//        HttpEntity<ProjectDTO> entity = new HttpEntity<ProjectDTO>(projectDTO,headers);
-//
-//        return restTemplate.exchange(
-//                uri , HttpMethod.PUT, entity, ProjectDTO.class).getBody();
-
-        //return restTemplate.put ( uri, updateProject(projectDTO), projectDTO.getId(id));
-        //return projectDTO;
-

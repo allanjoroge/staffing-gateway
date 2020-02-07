@@ -1,9 +1,6 @@
 package com.perficient.staffing.gateway.project.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Date;
 
@@ -12,6 +9,8 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectDTO {
+
+    @ToString.Exclude
     private String accountDeveloper;
     private Integer businessUnitId;
     private Integer clientId;

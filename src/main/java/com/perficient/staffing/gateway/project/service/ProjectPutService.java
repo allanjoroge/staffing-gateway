@@ -4,6 +4,6 @@ import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 
 public interface ProjectPutService {
 
-    ProjectDTO updateProject(ProjectDTO projectDTO);
+    void updateProject(ProjectDTO projectDTO);
 
 }
