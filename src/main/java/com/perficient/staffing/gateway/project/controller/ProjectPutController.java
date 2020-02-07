@@ -19,7 +19,6 @@ public class ProjectPutController {
     @ResponseStatus(HttpStatus.OK)
     public ProjectDTO updateProject(@RequestBody ProjectDTO projectDTO) {
 
-
             return projectDTO;
     }
 }
