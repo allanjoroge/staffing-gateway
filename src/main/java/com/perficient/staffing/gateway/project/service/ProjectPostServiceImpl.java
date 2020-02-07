@@ -16,7 +16,6 @@ import java.util.Collections;
 @Service
 public class ProjectPostServiceImpl implements ProjectPostService {
 
-
     private RestTemplate restTemplate;
 
     @Autowired
