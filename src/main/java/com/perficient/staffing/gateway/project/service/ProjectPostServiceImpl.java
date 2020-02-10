@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ProjectPostServiceImpl implements ProjectPostService {
 
-
     private RestTemplate restTemplate;
 
     @Autowired
