@@ -1,6 +1,5 @@
 package com.perficient.staffing.staffinggateway.controller.test;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.staffing.gateway.project.controller.ProjectPutController;
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
@@ -17,8 +16,6 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = ProjectPutController.class)
@@ -42,8 +39,8 @@ public class ProjectPutControllerTest {
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         MockHttpServletResponse response = result.getResponse();
 
-       // verify(projectPutService, times(1)).updateProject(projectDTO);
-       // verifyNoMoreInteractions(projectPutService); //unexpected behaviors side effects
+        // verify(projectPutService, times(1)).updateProject(projectDTO);
+        // verifyNoMoreInteractions(projectPutService); //unexpected behaviors side effects
         assertEquals(HttpStatus.OK.value(), response.getStatus());
 
     }

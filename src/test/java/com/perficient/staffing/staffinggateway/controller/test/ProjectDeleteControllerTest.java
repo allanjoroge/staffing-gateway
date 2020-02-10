@@ -4,14 +4,6 @@ public class ProjectDeleteControllerTest {
 }
 
 
-
-
-
-
-
-
-
-
 //FROM MICRO SERVICES
 // @RunWith(SpringRunner.class)
 //@WebMvcTest(value = ProjectDeleteController.class)

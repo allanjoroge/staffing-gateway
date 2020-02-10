@@ -1,6 +1,5 @@
 package com.perficient.staffing.gateway.project.service;
 
-import com.perficient.staffing.gateway.project.controller.ProjectGetController;
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +13,8 @@ import java.util.List;
 @Service
 public class ProjectGetServiceImpl implements ProjectGetService {
 
+    public static final String  PROJECT_MS_URL = "http://localhost:8081/projects/";
+
     private RestTemplate restTemplate;
 
     @Autowired
@@ -25,7 +26,7 @@ public class ProjectGetServiceImpl implements ProjectGetService {
     @Override
     public List<ProjectDTO> search(Integer businessUnitId) {
 
-        String uri = "http://localhost:8081/projects";
+        String uri = PROJECT_MS_URL;
 
         if (businessUnitId != null) {
             uri = uri + "?businessUnitId=" + businessUnitId;
@@ -34,7 +35,7 @@ public class ProjectGetServiceImpl implements ProjectGetService {
         ResponseEntity<ProjectDTO[]> entity = restTemplate.getForEntity(uri,
                 ProjectDTO[].class);
 
-        return entity.getBody() != null? Arrays.asList(entity.getBody()) : Collections.emptyList();
+        return entity.getBody() != null ? Arrays.asList(entity.getBody()) : Collections.emptyList();
     }
 
 //    @Override

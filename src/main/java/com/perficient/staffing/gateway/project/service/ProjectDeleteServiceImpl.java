@@ -10,7 +10,7 @@ public class ProjectDeleteServiceImpl implements ProjectDeleteService {
     private RestTemplate restTemplate;
 
     @Autowired
-    public ProjectDeleteServiceImpl(RestTemplate restTemplate){
+    public ProjectDeleteServiceImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 

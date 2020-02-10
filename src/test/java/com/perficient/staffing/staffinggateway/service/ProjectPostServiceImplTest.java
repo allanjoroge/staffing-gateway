@@ -35,7 +35,6 @@ public class ProjectPostServiceImplTest {
         verify(restTemplateMock, times(1)).postForObject(anyString(), any(), eq(ProjectDTO.class));
 
 
-
     }
 }
 

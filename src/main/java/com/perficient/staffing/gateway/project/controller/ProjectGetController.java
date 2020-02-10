@@ -6,7 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -26,7 +29,7 @@ public class ProjectGetController {
     @ResponseStatus(HttpStatus.OK)
     public List<ProjectDTO> search(@RequestParam @Nullable Integer businessUnitId) {
 
-       return projectGetService.search(businessUnitId);
+        return projectGetService.search(businessUnitId);
 
     }
 
