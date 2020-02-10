@@ -30,9 +30,7 @@ public class ProjectDeleteControllerTest {
 
     @Test
     public void verifyProjectDeleted() throws Exception {
-
-        when(projectDeleteService.deleteByProjectId(4)).thenReturn(true);
-
+        //Happy Path
         //Build a DELETE request
         RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/projects/4");
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
@@ -41,9 +39,8 @@ public class ProjectDeleteControllerTest {
         //Verify interaction with the mocked projectDeleteService
         verify(projectDeleteService, times(1)).deleteByProjectId(4);
         verifyNoMoreInteractions(projectDeleteService);
-        assertEquals(HttpStatus.OK.value(), response.getStatus());
+        assertEquals(HttpStatus.NO_CONTENT.value(), response.getStatus());
     }
-
 
 }
 

@@ -2,10 +2,8 @@ package com.perficient.staffing.gateway.project.controller;
 
 import com.perficient.staffing.gateway.project.service.ProjectDeleteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ProjectDeleteController {
@@ -18,21 +16,13 @@ public class ProjectDeleteController {
     }
 
 
-    @DeleteMapping
-    @RequestMapping(path = "/projects/{id}"/*, method = RequestMethod.DELETE*/)
+    @DeleteMapping(path = "/projects/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteByProjectId(@PathVariable Integer id) {
 
-        try {
-            projectDeleteService.deleteByProjectId(id);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        projectDeleteService.deleteByProjectId(id);
     }
+
 }
 
 
-//public ResponseEntity<HttpStatus> deleteByProjectId(@PathVariable Integer id) {
-//
-//        boolean result = projectDeleteService.deleteByProjectId(id);
-//        if (result) return new ResponseEntity<HttpStatus>(HttpStatus.OK);
-//        else return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
