@@ -1,14 +1,12 @@
 package com.perficient.staffing.gateway.project.service;
 
-import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -16,22 +14,22 @@ public class ProjectDeleteServiceImpl implements ProjectDeleteService {
 
     private RestTemplate restTemplate;
 
+    public static final String PROJECTS_MS_URL = "http://localhost:8081/projects";
+
     @Autowired
-    public ProjectDeleteServiceImpl(RestTemplate restTemplate){
+    public ProjectDeleteServiceImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
     @Override
-    @DeleteMapping("/projects/{id}")
-    public boolean deleteByProjectId(Integer id) {
-        Optional<ProjectDTO> projectDTO = restTemplate.delete;
+    public void deleteByProjectId(Integer id) {
 
-        if (projectDTO.isPresent()) {
-            restTemplate.deleteById(id);
-            return true;
-        } else {
-            return false;
-        }
+        String url = PROJECTS_MS_URL + id.toString();
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("id", id.toString());
+        restTemplate.delete(url, params);
+
     }
 
 }
