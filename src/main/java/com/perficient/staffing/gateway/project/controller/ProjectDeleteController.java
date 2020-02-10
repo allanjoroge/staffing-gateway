@@ -22,10 +22,7 @@ public class ProjectDeleteController {
     public ResponseEntity<HttpStatus> deleteProjectById(@PathVariable Integer id) {
 
         boolean result = projectDeleteService.deleteByProjectId(id);
-        if (result) {
-            return new ResponseEntity<HttpStatus>(HttpStatus.OK);
-        } else {
-            return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
-        }
+        if (result) return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+        else return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
     }
 }
