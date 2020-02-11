@@ -24,6 +24,7 @@ public class ProjectPostController {
     @PostMapping("/projects")
     @ResponseStatus(HttpStatus.CREATED)
     public ProjectDTO createProject(@RequestBody ProjectDTO projectDTO) {
+
         ProjectDTO newProjectDTO = projectPostService.saveProject(projectDTO);
 
         log.debug("Created new project {}", newProjectDTO.toString());
