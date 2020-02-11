@@ -47,20 +47,21 @@ public class ProjectGetServiceImplTest {
 
     }
 
-    @Test
-    public void searchForAll() {
 
-        ResponseEntity entity = new ResponseEntity<ProjectDTO[]>(HttpStatus.OK);
-        when(restTemplateMock.getForEntity(anyString(), any())).thenReturn(entity);
+    @Test
+    public void findByProjectId() {
+
+         ProjectDTO projectDTO = new ProjectDTO();
+        when(restTemplateMock.getForObject(anyString(), any())).thenReturn(projectDTO);
 
         ArgumentCaptor<String> uriCaptor = ArgumentCaptor.forClass(String.class);
 
-        List<ProjectDTO> result = projectGetService.search(null);
+        projectGetService.findProjectById(2);
 
-        verify(restTemplateMock, times(1)).getForEntity(uriCaptor.capture(), any());
+        verify(restTemplateMock, times(1)).getForObject(uriCaptor.capture(), any());
         String actualUri = uriCaptor.getValue();
 
-        assertThat(actualUri, is(ProjectGetServiceImpl.PROJECT_MS_URL));
+        assertThat(actualUri, is(ProjectGetServiceImpl.PROJECT_MS_URL + 2));
 
     }
 }

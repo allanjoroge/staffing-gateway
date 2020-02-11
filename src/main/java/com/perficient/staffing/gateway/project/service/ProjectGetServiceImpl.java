@@ -38,8 +38,12 @@ public class ProjectGetServiceImpl implements ProjectGetService {
         return entity.getBody() != null ? Arrays.asList(entity.getBody()) : Collections.emptyList();
     }
 
-//    @Override
-//    public ProjectDTO findProjectById(Integer id) {
-//        return null;
-//    }
+    @Override
+    public ProjectDTO findProjectById(Integer id) {
+
+         ProjectDTO project = restTemplate.getForObject(PROJECT_MS_URL + id,
+                ProjectDTO.class);
+
+        return project;
+    }
 }

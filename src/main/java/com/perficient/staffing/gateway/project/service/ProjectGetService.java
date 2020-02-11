@@ -8,5 +8,5 @@ public interface ProjectGetService {
 
     List<ProjectDTO> search(Integer businessUnitId);
 
-    // ProjectDTO findProjectById(Integer id);
+    ProjectDTO findProjectById(Integer id);
 }

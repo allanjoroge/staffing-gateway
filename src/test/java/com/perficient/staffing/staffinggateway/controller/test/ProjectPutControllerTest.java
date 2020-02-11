@@ -28,7 +28,6 @@ public class ProjectPutControllerTest {
 
         //setup mock objects
         ProjectDTO projectDTO = ProjectDTO.builder().id(200).projectName("Sami").accountDeveloper("Jordan").build();
-        //when(projectPutService.updateProject(projectDTO)).thenReturn(projectDTO);
 
         //turn dto to a json string
         ObjectMapper mapper = new ObjectMapper();
@@ -39,8 +38,8 @@ public class ProjectPutControllerTest {
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         MockHttpServletResponse response = result.getResponse();
 
-        // verify(projectPutService, times(1)).updateProject(projectDTO);
-        // verifyNoMoreInteractions(projectPutService); //unexpected behaviors side effects
+//         verify(projectPutService, times(1)).updateProject(projectDTO);
+//         verifyNoMoreInteractions(projectPutService); //unexpected behaviors side effects
         assertEquals(HttpStatus.OK.value(), response.getStatus());
 
     }
