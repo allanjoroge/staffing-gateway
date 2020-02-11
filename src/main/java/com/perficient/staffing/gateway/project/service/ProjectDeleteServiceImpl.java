@@ -29,7 +29,6 @@ public class ProjectDeleteServiceImpl implements ProjectDeleteService {
         Map<String, String> params = new HashMap<String, String>();
         params.put("id", id.toString());
         restTemplate.delete(url, params);
-
     }
 
 }
