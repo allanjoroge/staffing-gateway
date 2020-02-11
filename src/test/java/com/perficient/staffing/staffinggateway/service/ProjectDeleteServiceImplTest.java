@@ -5,6 +5,7 @@ import com.perficient.staffing.gateway.project.service.ProjectDeleteServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -13,10 +14,11 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+import static org.hamcrest.Matchers.is;
 
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProjectDeleteServiceImplTest {
@@ -40,23 +42,11 @@ public class ProjectDeleteServiceImplTest {
         //assertEquals(HttpStatus.NO_CONTENT, projectDeleteService.);
         //assertEquals(projectDeleteService, true);
     }
-
-//    @Test
-//    public void deleteByProjectId_success() {
-//
-//        //setup
-//        Project project = Project.builder().id(2).build();
-//        when(projectRepositoryMock.findById(2)).thenReturn(Optional.of(project));
-//
-//        //call method under test.
-//        ProjectDeleteServiceImpl projectDeleteService =
-//                new ProjectDeleteServiceImpl(projectRepositoryMock);
-//        boolean result = projectDeleteService.deleteByProjectId(2);
-//
-//        verify(projectRepositoryMock).findById(2);
-//        verify(projectRepositoryMock).deleteById(2);
-//        assertEquals(result, true);
-//    }
-
-
 }
+
+//        ArgumentCaptor<String> uriCaptor = ArgumentCaptor.forClass(String.class);
+//        projectDeleteService.deleteByProjectId(2);
+//
+//        verify(restTemplateMock, times(1)).delete("http://localhost:8081/projects/2");
+//        String actualUri = uriCaptor.getValue();
+//        assertThat(actualUri, is(ProjectDeleteServiceImpl.PROJECTS_MS_URL + 2));

@@ -14,7 +14,7 @@ public class ProjectDeleteServiceImpl implements ProjectDeleteService {
 
     private RestTemplate restTemplate;
 
-    public static final String PROJECTS_MS_URL = "http://localhost:8081/projects";
+    public static final String PROJECTS_MS_URL = "http://localhost:8081/projects/";
 
     @Autowired
     public ProjectDeleteServiceImpl(RestTemplate restTemplate) {
@@ -25,10 +25,11 @@ public class ProjectDeleteServiceImpl implements ProjectDeleteService {
     public void deleteByProjectId(Integer id) {
 
         String url = PROJECTS_MS_URL + id.toString();
+        log.debug("Updating project Id {} DTO is {}", id);
 
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("id", id.toString());
-        restTemplate.delete(url, params);
+//        Map<String, String> params = new HashMap<String, String>();
+//        params.put("id", id.toString());
+        restTemplate.delete(url, id);
     }
 
 }
