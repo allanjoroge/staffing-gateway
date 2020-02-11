@@ -32,8 +32,8 @@ public class ProjectGetController {
 
     @GetMapping("/projects/{id}")
     @ResponseStatus(HttpStatus.OK)
+   // @ExceptionHandler
     public ProjectDTO findProjectById(@PathVariable Integer id) {
-
         return projectGetService.findProjectById(id);
     }
 }
