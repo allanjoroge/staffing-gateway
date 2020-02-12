@@ -28,7 +28,6 @@ public class ProjectPutServiceImpl implements ProjectPutService {
     }
 
     @Override
-    @PutMapping("/projects/{id}")
     public void updateProject(ProjectDTO projectDTO) {
 
         String url = PROJECT_MS_URL + projectDTO.getId();

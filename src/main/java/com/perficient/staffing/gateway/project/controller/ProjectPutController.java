@@ -20,7 +20,7 @@ public class ProjectPutController {
     }
 
     @PutMapping(value="/projects/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateProject(@RequestBody ProjectDTO projectDTO) {
 
          projectPutService.updateProject(projectDTO);
