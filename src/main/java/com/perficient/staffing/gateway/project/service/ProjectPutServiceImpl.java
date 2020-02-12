@@ -18,7 +18,7 @@ import java.util.Arrays;
 @Service
 public class ProjectPutServiceImpl implements ProjectPutService {
 
-    public static final String  PROJECT_MS_URL = "http://localhost:8081/projects";
+    public static final String  PROJECT_MS_URL = "http://localhost:8081/projects/";
 
     private RestTemplate restTemplate;
 

@@ -19,8 +19,8 @@ public class ProjectDeleteServiceImplTest {
     @Mock
     private RestTemplate restTemplateMock;
 
-    @InjectMocks
-    private ProjectDeleteServiceImpl projectDeleteService;
+//    @InjectMocks
+//    private ProjectDeleteServiceImpl projectDeleteService;
 
     @Test
     public void deleteProjectById() {
@@ -36,10 +36,3 @@ public class ProjectDeleteServiceImplTest {
         //assertEquals(projectDeleteService, true);
     }
 }
-
-//        ArgumentCaptor<String> uriCaptor = ArgumentCaptor.forClass(String.class);
-//        projectDeleteService.deleteByProjectId(2);
-//
-//        verify(restTemplateMock, times(1)).delete("http://localhost:8081/projects/2");
-//        String actualUri = uriCaptor.getValue();
-//        assertThat(actualUri, is(ProjectDeleteServiceImpl.PROJECTS_MS_URL + 2));
