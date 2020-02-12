@@ -17,12 +17,10 @@ public class ProjectDeleteController {
     }
 
 
-    @DeleteMapping
-    @RequestMapping(path = "/projects/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<HttpStatus> deleteProjectById(@PathVariable Integer id) {
+    @DeleteMapping(path = "/projects/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProjectById(@PathVariable Integer id) {
 
-        boolean result = projectDeleteService.deleteByProjectId(id);
-        if (result) return new ResponseEntity<HttpStatus>(HttpStatus.OK);
-        else return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
+       projectDeleteService.deleteByProjectId(id);
     }
 }
