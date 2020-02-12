@@ -26,9 +26,6 @@ public class ProjectDeleteServiceImpl implements ProjectDeleteService {
 
         String url = PROJECTS_MS_URL + id.toString();
         log.debug("Updating project Id {} DTO is {}", id);
-
-//        Map<String, String> params = new HashMap<String, String>();
-//        params.put("id", id.toString());
         restTemplate.delete(url, id);
     }
 
