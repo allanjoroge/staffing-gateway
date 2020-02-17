@@ -33,6 +33,7 @@ public class ProjectGetController {
     @GetMapping("/projects/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ProjectDTO findProjectById(@PathVariable Integer id) {
+
         return projectGetService.findProjectById(id);
     }
 }
