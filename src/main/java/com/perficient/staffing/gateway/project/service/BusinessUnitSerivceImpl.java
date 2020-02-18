@@ -1,7 +1,6 @@
 package com.perficient.staffing.gateway.project.service;
 
 import com.perficient.staffing.gateway.project.dto.BusinessUnitDTO;
-import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
