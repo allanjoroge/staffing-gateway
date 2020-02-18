@@ -18,7 +18,7 @@ public class ProjectGetServiceImpl implements ProjectGetService {
     private RestTemplate restTemplate;
 
     @Autowired
-    public ProjectGetServiceImpl(RestTemplate restTemplate) {
+    public ProjectGetServiceImpl(RestTemplate restTemplate)   {
         this.restTemplate = restTemplate;
     }
 
