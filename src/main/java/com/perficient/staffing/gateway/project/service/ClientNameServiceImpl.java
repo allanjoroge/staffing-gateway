@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class ClientNameServiceImpl implements ClientNameService {
 
-    public static final String CLIENT_NAME_URL = "http://localhost:8081/client";
+    public static final String CLIENT_NAME_URL = "http://localhost:8081/client/";
 
     private RestTemplate restTemplate;
 
@@ -31,7 +31,7 @@ public class ClientNameServiceImpl implements ClientNameService {
 
         uri = uri + "?name=" + name;
 
-        ResponseEntity<ClientDTO[]> responseEntity= restTemplate.getForEntity(uri, ClientDTO[].class);
+        ResponseEntity<ClientDTO[]> responseEntity = restTemplate.getForEntity(uri, ClientDTO[].class);
 
         return responseEntity.getBody() != null ? Arrays.asList(responseEntity.getBody()) : Collections.emptyList();
     }

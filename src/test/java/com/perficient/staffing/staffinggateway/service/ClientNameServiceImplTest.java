@@ -31,17 +31,17 @@ public class ClientNameServiceImplTest {
 
     @Test
     public void findDistinctByName() {
-        ResponseEntity entity = new ResponseEntity<ClientDTO>(HttpStatus.OK);
-        when(restTemplateMock.getForEntity(anyString(), eq(ClientDTO.class))).thenReturn(entity);
+        ResponseEntity entity = new ResponseEntity<ClientDTO[]>(HttpStatus.OK);
+        when(restTemplateMock.getForEntity(anyString(), any())).thenReturn(entity);
 
         ArgumentCaptor<String> uriCaptor = ArgumentCaptor.forClass(String.class);
 
-        clientNameService.findDistinctByName(eq("Zona"));
+        clientNameService.findDistinctByName("Zava");
 
         verify(restTemplateMock, times(1)).getForEntity(uriCaptor.capture(), any());
         String actualUri = uriCaptor.getValue();
 
-        assertThat(actualUri, is(ClientNameServiceImpl.CLIENT_NAME_URL));
+        assertThat(actualUri, is(ClientNameServiceImpl.CLIENT_NAME_URL + "?name=Zava"));
 
     }
 }

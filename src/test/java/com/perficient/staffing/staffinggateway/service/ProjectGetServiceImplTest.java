@@ -51,7 +51,7 @@ public class ProjectGetServiceImplTest {
     @Test
     public void findByProjectId() {
 
-         ProjectDTO projectDTO = new ProjectDTO();
+        ProjectDTO projectDTO = new ProjectDTO();
         when(restTemplateMock.getForObject(anyString(), any())).thenReturn(projectDTO);
 
         ArgumentCaptor<String> uriCaptor = ArgumentCaptor.forClass(String.class);
