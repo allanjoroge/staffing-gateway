@@ -26,6 +26,7 @@ public class ClientNameController {
     @GetMapping("/client")
     @ResponseStatus(HttpStatus.OK)
     public List<ClientDTO> findByDistinctByName(@RequestParam @Nullable String name) {
+
         return clientNameService.findDistinctByName(name);
     }
 }

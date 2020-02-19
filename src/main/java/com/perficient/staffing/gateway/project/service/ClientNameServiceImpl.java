@@ -14,12 +14,13 @@ import java.util.List;
 @Service
 public class ClientNameServiceImpl implements ClientNameService {
 
-    public static final String CLIENT_NAME_URL = "http://localhost:8081/client/";
+    public static final String CLIENT_NAME_URL = "http://localhost:8081/client";
 
     private RestTemplate restTemplate;
 
     @Autowired
     public ClientNameServiceImpl(RestTemplate restTemplate) {
+
         this.restTemplate = restTemplate;
     }
 

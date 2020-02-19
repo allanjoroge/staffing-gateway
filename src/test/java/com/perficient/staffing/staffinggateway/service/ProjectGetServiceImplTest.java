@@ -38,7 +38,7 @@ public class ProjectGetServiceImplTest {
 
         ArgumentCaptor<String> uriCaptor = ArgumentCaptor.forClass(String.class);
 
-        List<ProjectDTO> result = projectGetService.search(4);
+        projectGetService.search(4);
 
         verify(restTemplateMock, times(1)).getForEntity(uriCaptor.capture(), any());
         String actualUri = uriCaptor.getValue();
