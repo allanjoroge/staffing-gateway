@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(url="http://localhost:8081", value = "staffing")
+@FeignClient(url="http://localhost:8081", name = "staffing")
 public interface ProjectClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/project-types")
