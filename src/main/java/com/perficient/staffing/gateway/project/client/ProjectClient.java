@@ -12,6 +12,7 @@ import java.util.List;
 public interface ProjectClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/project-types")
+    //Created a method called getProjectTypes that returns a List of ProjectDTOs
     List<ProjectTypeDTO> getProjectTypes();
 
     @RequestMapping(method = RequestMethod.GET, value = "/project-status")
