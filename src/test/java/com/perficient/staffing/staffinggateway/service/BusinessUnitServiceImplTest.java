@@ -2,10 +2,7 @@ package com.perficient.staffing.staffinggateway.service;
 
 
 import com.perficient.staffing.gateway.project.dto.BusinessUnitDTO;
-import com.perficient.staffing.gateway.project.dto.ProjectDTO;
-import com.perficient.staffing.gateway.project.service.BusinessUnitSerivceImpl;
-import com.perficient.staffing.gateway.project.service.BusinessUnitService;
-import com.perficient.staffing.gateway.project.service.ProjectGetServiceImpl;
+import com.perficient.staffing.gateway.project.service.BusinessUnitServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -15,8 +12,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -31,7 +26,7 @@ public class BusinessUnitServiceImplTest {
     private RestTemplate restTemplateMock;
 
     @InjectMocks
-    private BusinessUnitSerivceImpl businessUnitSerivce;
+    private BusinessUnitServiceImpl businessUnitSerivce;
 
     @Test
     public void findAllBusinessUnits() {

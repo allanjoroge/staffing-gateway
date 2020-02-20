@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Service
-public class BusinessUnitSerivceImpl implements BusinessUnitService {
+public class BusinessUnitServiceImpl implements BusinessUnitService {
 
     @Value("${business.unit.url}")
     public String businessUnitUrl;
@@ -21,7 +21,7 @@ public class BusinessUnitSerivceImpl implements BusinessUnitService {
     private RestTemplate restTemplate;
 
     @Autowired
-    public  BusinessUnitSerivceImpl(RestTemplate restTemplate){
+    public BusinessUnitServiceImpl(RestTemplate restTemplate){
         this.restTemplate = restTemplate;
     }
 
