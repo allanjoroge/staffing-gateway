@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient(url= "${feign.url}", name = "staffing")
+@FeignClient(url= "${project.url}", name = "project")
 public interface ProjectClient {
 
     @GetMapping("/project-types")
