@@ -36,7 +36,7 @@ public class ProjectPutServiceImplTest {
 
         verify(restTemplateMock, times(1)).put(uriCaptor.capture(), any());
         String actualUri = uriCaptor.getValue();
-        assertThat(actualUri, is(ProjectPutServiceImpl.PROJECT_MS_URL + 5));
+        assertThat(actualUri, is(projectPutService.projectUrl + 5));
 
     }
 }

@@ -2,14 +2,18 @@ package com.perficient.staffing.staffinggateway.service;
 
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import com.perficient.staffing.gateway.project.service.ProjectGetServiceImpl;
+import com.perficient.staffing.gateway.project.service.ProjectTypeServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -22,7 +26,12 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
+@ContextConfiguration(classes = ProjectGetServiceImpl.class)
+@TestPropertySource
 public class ProjectGetServiceImplTest {
+
+//    @Autowired
+//    application-local.properties
 
     @Mock
     private RestTemplate restTemplateMock;
@@ -43,7 +52,7 @@ public class ProjectGetServiceImplTest {
         verify(restTemplateMock, times(1)).getForEntity(uriCaptor.capture(), any());
         String actualUri = uriCaptor.getValue();
 
-        assertThat(actualUri, is(ProjectGetServiceImpl.PROJECT_MS_URL + "?businessUnitId=4"));
+        assertThat(actualUri, is(projectGetService.projectUrl + "?businessUnitId=4"));
 
     }
 
@@ -61,7 +70,7 @@ public class ProjectGetServiceImplTest {
         verify(restTemplateMock, times(1)).getForObject(uriCaptor.capture(), any());
         String actualUri = uriCaptor.getValue();
 
-        assertThat(actualUri, is(ProjectGetServiceImpl.PROJECT_MS_URL + 2));
+        assertThat(actualUri, is(projectGetService.projectUrl + 2));
 
     }
 }

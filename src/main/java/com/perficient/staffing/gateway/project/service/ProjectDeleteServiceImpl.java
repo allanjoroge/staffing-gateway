@@ -5,12 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import static com.perficient.staffing.properties.Props.PROJECTS_MS_URL;
+
 @Service
 @Slf4j
 public class ProjectDeleteServiceImpl implements ProjectDeleteService {
 
     private RestTemplate restTemplate;
-    public static final String PROJECTS_MS_URL = "http://localhost:8081/projects/";
 
     @Autowired
     public ProjectDeleteServiceImpl(RestTemplate restTemplate) {

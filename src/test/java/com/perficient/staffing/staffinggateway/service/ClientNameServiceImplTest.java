@@ -41,7 +41,7 @@ public class ClientNameServiceImplTest {
         verify(restTemplateMock, times(1)).getForEntity(uriCaptor.capture(), any());
         String actualUri = uriCaptor.getValue();
 
-        assertThat(actualUri, is(ClientNameServiceImpl.CLIENT_NAME_URL + "?name=Zava"));
+        assertThat(actualUri, is(clientNameService.clientUrl + "?name=Zava"));
 
     }
 }

@@ -46,7 +46,7 @@ public class BusinessUnitServiceImplTest {
         verify(restTemplateMock, times(1)).getForEntity(uriCaptor.capture(), any());
         String actualUri = uriCaptor.getValue();
 
-        assertThat(actualUri, is(BusinessUnitSerivceImpl.BUSINESS_UNIT_URL));
+        assertThat(actualUri, is(businessUnitSerivce.businessUnitUrl));
 
     }
 }

@@ -2,6 +2,7 @@ package com.perficient.staffing.gateway.project.service;
 
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -13,7 +14,8 @@ import java.util.List;
 @Service
 public class ProjectGetServiceImpl implements ProjectGetService {
 
-    public static final String  PROJECT_MS_URL = "http://localhost:8081/projects/";
+    @Value("${project.ms.url}")
+    public String projectUrl;
 
     private RestTemplate restTemplate;
 
@@ -26,7 +28,7 @@ public class ProjectGetServiceImpl implements ProjectGetService {
     @Override
     public List<ProjectDTO> search(Integer businessUnitId) {
 
-        String uri = PROJECT_MS_URL;
+        String uri = projectUrl;
 
         if (businessUnitId != null) {
             uri = uri + "?businessUnitId=" + businessUnitId;
@@ -41,7 +43,7 @@ public class ProjectGetServiceImpl implements ProjectGetService {
     @Override
     public ProjectDTO findProjectById(Integer id) {
 
-         ProjectDTO project = restTemplate.getForObject(PROJECT_MS_URL + id,
+         ProjectDTO project = restTemplate.getForObject(projectUrl + id,
                 ProjectDTO.class);
 
         return project;
