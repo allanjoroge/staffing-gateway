@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import static org.mockito.Mockito.lenient;
+
 @RunWith(MockitoJUnitRunner.class)
 public class ProjectDeleteServiceImplTest {
 
@@ -26,7 +28,7 @@ public class ProjectDeleteServiceImplTest {
     public void deleteProjectById() {
 
         ProjectDTO projectDTO = ProjectDTO.builder().id(2).build();
-        Mockito.when(restTemplateMock
+        lenient().when(restTemplateMock
                 .getForEntity("http://localhost8081/projects/{id}", ProjectDTO.class))
                 .thenReturn(new ResponseEntity<>(projectDTO, HttpStatus.OK));
 
