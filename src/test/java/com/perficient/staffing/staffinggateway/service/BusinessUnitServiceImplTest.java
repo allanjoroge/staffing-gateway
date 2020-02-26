@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
@@ -26,22 +28,22 @@ public class BusinessUnitServiceImplTest {
     private RestTemplate restTemplateMock;
 
     @InjectMocks
-    private BusinessUnitServiceImpl businessUnitSerivce;
+    private BusinessUnitServiceImpl businessUnitServiceMock;
 
     @Test
-    public void findAllBusinessUnits() {
+    public void findAllBusinessUnits(){
 
         ResponseEntity entity = new ResponseEntity<BusinessUnitDTO[]>(HttpStatus.OK);
-        when(restTemplateMock.getForEntity(anyString(), any())).thenReturn(entity);
+        when(restTemplateMock.getForEntity(businessUnitServiceMock.businessUnitUrl, BusinessUnitDTO[].class)).thenReturn(entity);
 
         ArgumentCaptor<String> uriCaptor = ArgumentCaptor.forClass(String.class);
 
-        businessUnitSerivce.findAll();
+        businessUnitServiceMock.findAll();
 
         verify(restTemplateMock, times(1)).getForEntity(uriCaptor.capture(), any());
         String actualUri = uriCaptor.getValue();
 
-        assertThat(actualUri, is(businessUnitSerivce.businessUnitUrl));
+        assertThat(actualUri, is(businessUnitServiceMock.businessUnitUrl));
 
     }
 }
