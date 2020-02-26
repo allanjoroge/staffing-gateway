@@ -21,19 +21,19 @@ public class ProjectPostServiceImplTest {
     private RestTemplate restTemplateMock;
 
     @InjectMocks
-    private ProjectPostServiceImpl projectPostService;
+    private ProjectPostServiceImpl projectPostServiceMock;
 
     @Test
     public void saveProject() {
 
         ProjectDTO projectDTO = ProjectDTO.builder().id(5).businessUnit(BusinessUnitDTO.builder().id(4).build()).projectName("John").build();
 
-        when(restTemplateMock.postForObject(anyString(), any(), eq(ProjectDTO.class))).thenReturn(projectDTO);
+        when(restTemplateMock.postForObject(projectPostServiceMock.projectUrl, projectDTO, ProjectDTO.class)).thenReturn(projectDTO);
 
-        ProjectDTO dto = projectPostService.saveProject(projectDTO);
+        ProjectDTO dto = projectPostServiceMock.saveProject(projectDTO);
         assertNotNull(dto);
 
-        verify(restTemplateMock, times(1)).postForObject(anyString(), any(), eq(ProjectDTO.class));
+        verify(restTemplateMock, times(1)).postForObject(projectPostServiceMock.projectUrl, projectDTO, ProjectDTO.class);
 
     }
 }

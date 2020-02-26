@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class ProjectPostServiceImpl implements ProjectPostService {
 
     @Value("${project.ms.url}")
-    private String projectUrl;
+    public String projectUrl;
 
     private RestTemplate restTemplate;
 
