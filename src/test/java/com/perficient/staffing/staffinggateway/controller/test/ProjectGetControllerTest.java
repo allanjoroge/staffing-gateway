@@ -1,6 +1,7 @@
 package com.perficient.staffing.staffinggateway.controller.test;
 
 import com.perficient.staffing.gateway.project.controller.ProjectGetController;
+import com.perficient.staffing.gateway.project.dto.BusinessUnitDTO;
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import com.perficient.staffing.gateway.project.service.ProjectGetService;
 import org.junit.Ignore;
@@ -58,7 +59,7 @@ public class ProjectGetControllerTest {
 
         //setup
         List<ProjectDTO> projectDTOList = new ArrayList<>();
-        projectDTOList.add(ProjectDTO.builder().id(5).businessUnitId(10).projectName("Albert").build());
+        projectDTOList.add(ProjectDTO.builder().id(5).businessUnit(BusinessUnitDTO.builder().id(10).build()).projectName("Albert").build());
         when(projectGetService.search(10)).thenReturn(projectDTOList);
 
         //build a GET request for /projects executing MockMvc

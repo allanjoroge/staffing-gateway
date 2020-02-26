@@ -2,6 +2,7 @@ package com.perficient.staffing.staffinggateway.controller.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.perficient.staffing.gateway.project.controller.ProjectPostController;
+import com.perficient.staffing.gateway.project.dto.BusinessUnitDTO;
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import com.perficient.staffing.gateway.project.service.ProjectPostService;
 import org.junit.Test;
@@ -32,7 +33,7 @@ public class ProjectPostControllerTest {
 
     @Test
     public void createProject() throws Exception {
-        ProjectDTO projectDTO = ProjectDTO.builder().id(3000).projectName("sami").businessUnitId(5).build();
+        ProjectDTO projectDTO = ProjectDTO.builder().id(3000).projectName("sami").businessUnit(BusinessUnitDTO.builder().id(5).build()).build();
         when(projectPostService.saveProject(projectDTO)).thenReturn(projectDTO);
 
         ObjectMapper mapper = new ObjectMapper();

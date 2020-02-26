@@ -1,5 +1,6 @@
 package com.perficient.staffing.staffinggateway.service;
 
+import com.perficient.staffing.gateway.project.dto.BusinessUnitDTO;
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import com.perficient.staffing.gateway.project.service.ProjectPostServiceImpl;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class ProjectPostServiceImplTest {
     @Test
     public void saveProject() {
 
-        ProjectDTO projectDTO = ProjectDTO.builder().id(5).businessUnitId(4).projectName("John").build();
+        ProjectDTO projectDTO = ProjectDTO.builder().id(5).businessUnit(BusinessUnitDTO.builder().id(4).build()).projectName("John").build();
 
         when(restTemplateMock.postForObject(anyString(), any(), eq(ProjectDTO.class))).thenReturn(projectDTO);
 

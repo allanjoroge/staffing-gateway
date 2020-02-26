@@ -10,17 +10,16 @@ import java.sql.Date;
 @NoArgsConstructor
 public class ProjectDTO {
 
-    @ToString.Exclude
     private String accountDeveloper;
-    private Integer businessUnitId;
-    private Integer clientId;
     private String comments;
     private Date endDate;
     private String engagementDirector;
     private Integer id;
     private String projectName;
-    private Integer projectStatusId;
-    private Integer projectTypeId;
     private Date startDate;
     private Integer travelFlag;
+    private BusinessUnitDTO businessUnit;
+    private ProjectTypeDTO projectType;
+    private ProjectStatusDTO projectStatus;
+    private ClientDTO client;
 }

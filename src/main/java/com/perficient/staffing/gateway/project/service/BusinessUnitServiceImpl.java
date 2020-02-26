@@ -22,6 +22,7 @@ public class BusinessUnitServiceImpl implements BusinessUnitService {
 
     @Autowired
     public BusinessUnitServiceImpl(RestTemplate restTemplate){
+
         this.restTemplate = restTemplate;
     }
 

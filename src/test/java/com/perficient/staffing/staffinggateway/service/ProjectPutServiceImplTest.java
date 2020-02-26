@@ -1,6 +1,7 @@
 package com.perficient.staffing.staffinggateway.service;
 
 
+import com.perficient.staffing.gateway.project.dto.BusinessUnitDTO;
 import com.perficient.staffing.gateway.project.dto.ProjectDTO;
 import com.perficient.staffing.gateway.project.service.ProjectPutServiceImpl;
 import org.junit.Test;
@@ -29,7 +30,7 @@ public class ProjectPutServiceImplTest {
     @Test
     public void updateProject() {
 
-        ProjectDTO projectDTO = ProjectDTO.builder().id(5).businessUnitId(4).projectName("John").build();
+        ProjectDTO projectDTO = ProjectDTO.builder().id(5).businessUnit(BusinessUnitDTO.builder().id(4).build()).projectName("John").build();
 
         ArgumentCaptor<String> uriCaptor = ArgumentCaptor.forClass(String.class);
         projectPutService.updateProject(projectDTO);
